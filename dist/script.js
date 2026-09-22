@@ -52,3 +52,19 @@ const observer = new IntersectionObserver((entries) => {
   links.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`));
 }, { rootMargin: '-20% 0px -65%', threshold: [0, .2, .5] });
 sections.forEach((section) => observer.observe(section));
+
+const shellDetails = {
+  suduri: ['수두리보말', '제주 해양수산연구원이 ‘팽이고둥’으로 확인한 지역명입니다. 조간대를 포함한 수심 5m 이내의 얕은 바다에 주로 살며, 제주 보말 가운데 비교적 크고 식용 가치가 높은 종류로 소개됩니다.'],
+  meok: ['먹보말', '제주어 구술에서는 검고 매끈한 껍데기를 가진 고둥으로 묘사됩니다. 구술 자료의 표준어 풀이에는 ‘밤고둥’으로 제시된 사례가 있으나, 지역마다 가리키는 대상이 같은지는 현장 확인이 필요합니다.'],
+  dol: ['돌포말', '여러 마을의 구술에 등장하는 이름입니다. 자료에 따라 눈알고둥 등으로 풀이되기도 하지만, 생활 이름과 생물학적 종명이 항상 일대일로 맞지는 않습니다.'],
+  others: ['ᄎᆞᆷᄀᆞ메기·메옹이·가메기보말', '제주에는 껍데기 모양, 색, 맛, 사는 자리에 따라 보말을 더 잘게 부르는 말이 남아 있습니다. 같은 말의 뜻이 지역과 세대에 따라 달라질 수 있다는 점 자체가 중요한 기록입니다.']
+};
+
+document.querySelectorAll('.shell-tab').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.shell-tab').forEach((el) => el.classList.toggle('active', el === button));
+    const [title, copy] = shellDetails[button.dataset.shell];
+    document.querySelector('#shell-title').textContent = title;
+    document.querySelector('#shell-copy').textContent = copy;
+  });
+});
