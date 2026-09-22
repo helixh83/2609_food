@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">제주 음식 도감</title>
+  <rect width="64" height="64" rx="18" fill="#e4a06e"/>
+  <path d="M12 38c6-9 13-13 20-13s14 4 20 13" fill="none" stroke="#162019" stroke-width="4" stroke-linecap="round"/>
+  <path d="M18 41h28c-2 8-8 13-14 13s-12-5-14-13Z" fill="#162019"/>
+  <path d="M21 22c0-5 3-8 7-11M32 22c0-5 3-8 7-11M43 24c0-4 2-7 5-9" fill="none" stroke="#f7f1e8" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="13" cy="16" r="4" fill="#f7f1e8"/>
+</svg>
