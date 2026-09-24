@@ -87,6 +87,106 @@ const fieldGuideIssues = [
 const currentIssueSlug = window.location.pathname.split('/').filter(Boolean).at(-1);
 const currentIssueIndex = fieldGuideIssues.findIndex(([slug]) => slug === currentIssueSlug);
 
+const foodStops = {
+  gosari: {
+    type: '향토음식점', name: '김재훈고사리육개장', location: '제주시 이도이동',
+    menu: '고사리육개장',
+    copy: '제주산 고사리를 갈지 않고 손으로 찢어 돼지사골 육수와 메밀가루에 푹 끓입니다. 도감에서 읽은 부드러운 고사리의 결을 한 그릇에서 살펴보기 좋습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000015661&menuId=DOM_000001719000000000'
+  },
+  bomal: {
+    type: '보말 전문점', name: '갱이네보말칼국수', location: '제주시 이도이동',
+    menu: '보말칼국수 · 보말죽',
+    copy: '보말과 미역을 넣어 끓인 칼국수와 죽을 냅니다. 작은 고둥의 살과 바다 향이 국물에 어떻게 남는지 비교하며 먹기 좋은 곳입니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000014779'
+  },
+  meljeot: {
+    type: '흑돼지 전문점', name: '해월향', location: '서귀포시 성산읍',
+    menu: '흑돼지구이와 멜젓',
+    copy: '흑돼지 여러 부위를 굽고 제주식 멜젓을 곁들입니다. 고기의 지방과 멜젓의 짠맛·감칠맛이 만나는 방식을 직접 확인할 수 있습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001157&menuId=DOM_000001719000000000'
+  },
+  bingtteok: {
+    type: '시장 식당', name: '제주토속', location: '제주시 보성시장',
+    menu: '제주 메밀 빙떡',
+    copy: '제주산 메밀전 안에 무나물을 넣어 말아 냅니다. 화려한 양념보다 메밀과 무채의 담백한 조합을 살펴보기 좋은 시장의 한 접시입니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000501363'
+  },
+  seongge: {
+    type: '해녀 음식점', name: '용두암 해녀촌', location: '제주시 용담동',
+    menu: '성게미역국',
+    copy: '해녀가 채취한 해산물을 중심으로 한 상을 내고 성게미역국을 함께 맛볼 수 있습니다. 채취물에서 따뜻한 국 한 그릇으로 이어지는 흐름을 보기 좋습니다.',
+    url: 'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000012766'
+  },
+  dombegogi: {
+    type: '향토음식점', name: '제주돔베고기집', location: '제주시 노형동',
+    menu: '돔베고기 · 몸국',
+    copy: '부드럽게 삶은 돼지고기를 썰어 내고 몸국을 함께 구성합니다. 돔베고기와 잔칫국이 같은 돼지 조리 과정에서 갈라진 관계를 한 상에서 볼 수 있습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000014930'
+  },
+  momguk: {
+    type: '향토음식점', name: '신설오름', location: '제주시 일도이동',
+    menu: '몸국 · 몸국수',
+    copy: '모자반과 돼지고기 육수를 걸쭉하게 끓인 몸국이 대표 메뉴입니다. 돔베고기도 함께 있어 제주 잔칫상의 두 갈래를 나란히 경험할 수 있습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020185'
+  },
+  jaridom: {
+    type: '물회 전문점', name: '산지물 제주공항본점', location: '제주시 건입동',
+    menu: '자리물회',
+    copy: '자리돔을 포함한 여러 제주 물회를 냅니다. 뼈째 가늘게 썬 자리의 식감과 된장·식초를 바탕으로 한 국물을 살펴보기 좋습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000501269'
+  },
+  okdom: {
+    type: '생선요리점', name: '명물', location: '제주시 삼도이동',
+    menu: '옥돔구이',
+    copy: '옥돔을 비롯한 제주 생선을 구이로 냅니다. 소금간해 말린 옥돔의 응축된 맛과 단단해진 살결을 다른 생선구이와 비교해 보기 좋습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001275&menuId=DOM_000001719001000000'
+  },
+  jiseul: {
+    type: '일정형 미식 체험', name: '제주미행', location: '제주소통협력센터 공유주방',
+    menu: '지슬밥 만들기와 시식',
+    copy: '제주 향토음식 명인과 시장에서 재료를 고르고 지슬밥을 직접 만들어 맛보는 프로그램입니다. 상시 식당이 아니므로 다음 회차와 주제를 먼저 확인해야 합니다.',
+    url: 'https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014436'
+  },
+  shwindari: {
+    type: '전통음식 체험', name: '폴개협동조합', location: '서귀포시 남원읍',
+    menu: '누룩·쉰다리 만들기',
+    copy: '남은 밥과 누룩이 음료가 되는 과정을 직접 다루는 체험을 운영합니다. 예약형 프로그램이므로 체험 가능일과 시음 여부를 방문 전에 확인해야 합니다.',
+    url: 'https://www.xn--6-ql4f73knwc95ai5j.com/files/2023/6%EC%B0%A8%EC%82%B0%EC%97%85%EC%9C%BC%EB%A1%9C%20%EC%B0%BE%EC%95%84%EA%B0%80%EB%8A%94%20%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%A7%80%EB%8F%840914.pdf'
+  },
+  kkwongyeot: {
+    type: '전통식품 생산자', name: '제주민속식품', location: '제주시 구좌읍',
+    menu: '제주 꿩엿',
+    copy: '식당에서 즉석으로 먹기 어려운 꿩엿을 전통식품 제품으로 만날 수 있습니다. 원재료와 제조 표시를 읽으며 도감의 기록과 오늘의 상품을 비교하기 좋습니다.',
+    url: 'https://www.tamnao.com/web/sv/detailPrdt.do?prdtNum=SV00000200'
+  }
+};
+
+if (currentIssueIndex >= 0 && foodStops[currentIssueSlug]) {
+  const stop = foodStops[currentIssueSlug];
+  const tasteStop = document.createElement('section');
+  tasteStop.className = 'taste-stop section-shell';
+  tasteStop.setAttribute('aria-labelledby', 'taste-stop-title');
+  tasteStop.innerHTML = `
+    <div class="taste-stop-heading">
+      <div class="section-kicker"><span>현장</span> 이 음식을 만나는 식탁</div>
+      <h2 id="taste-stop-title">도감에서 읽은 맛을<br>한 곳에서 이어 봅니다</h2>
+    </div>
+    <article class="taste-stop-card">
+      <div class="taste-stop-meta"><span>${stop.type}</span><small>${stop.location}</small></div>
+      <h3>${stop.name}</h3>
+      <p>${stop.copy}</p>
+      <div class="taste-stop-foot">
+        <span><small>살펴볼 메뉴</small><strong>${stop.menu}</strong></span>
+        <span><small>정보 확인</small><strong>2026. 09</strong></span>
+        <a href="${stop.url}" target="_blank" rel="noreferrer">장소 정보 ↗</a>
+      </div>
+    </article>
+    <p class="taste-stop-criteria"><strong>선정 기준</strong> 도감의 재료와 조리법을 실제 메뉴·체험·제품으로 확인할 수 있고 제주 공공 관광·지역 자료에서 확인되는 곳을 골랐습니다. 순위나 광고가 아니며, 방문 전 영업·예약 여부를 다시 확인해 주세요.</p>
+  `;
+  document.querySelector('main')?.append(tasteStop);
+}
+
 if (currentIssueIndex >= 0) {
   const makeIssueLink = (issue, direction) => {
     const link = document.createElement('a');
