@@ -68,3 +68,48 @@ document.querySelectorAll('.shell-tab').forEach((button) => {
     document.querySelector('#shell-copy').textContent = copy;
   });
 });
+
+const fieldGuideIssues = [
+  ['gosari', '01', '제주 고사리'],
+  ['bomal', '02', '보말'],
+  ['meljeot', '03', '멜젓'],
+  ['bingtteok', '04', '빙떡'],
+  ['seongge', '05', '제주 성게'],
+  ['dombegogi', '06', '돔베고기'],
+  ['momguk', '07', '몸국'],
+  ['jaridom', '08', '자리돔'],
+  ['okdom', '09', '옥돔'],
+  ['jiseul', '10', '지슬'],
+  ['shwindari', '11', '쉰다리'],
+  ['kkwongyeot', '12', '꿩엿']
+];
+
+const currentIssueSlug = window.location.pathname.split('/').filter(Boolean).at(-1);
+const currentIssueIndex = fieldGuideIssues.findIndex(([slug]) => slug === currentIssueSlug);
+
+if (currentIssueIndex >= 0) {
+  const makeIssueLink = (issue, direction) => {
+    const link = document.createElement('a');
+    link.className = `series-page-link ${direction}`;
+    link.href = `../${issue[0]}/`;
+    link.innerHTML = `<small>${direction === 'previous' ? '← 이전 편' : '다음 편 →'}</small><strong>${issue[1]} · ${issue[2]}</strong>`;
+    return link;
+  };
+
+  const pagination = document.createElement('nav');
+  pagination.className = 'series-pagination';
+  pagination.setAttribute('aria-label', '제주 음식 도감 이어 읽기');
+
+  const previousIssue = fieldGuideIssues[currentIssueIndex - 1];
+  const nextIssue = fieldGuideIssues[currentIssueIndex + 1];
+  if (previousIssue) pagination.append(makeIssueLink(previousIssue, 'previous'));
+
+  const collectionLink = document.createElement('a');
+  collectionLink.className = 'series-collection-link';
+  collectionLink.href = '../index.html#issues';
+  collectionLink.innerHTML = '<small>JEJU FOOD FIELD GUIDE</small><strong>열두 편 전체 보기</strong>';
+  pagination.append(collectionLink);
+
+  if (nextIssue) pagination.append(makeIssueLink(nextIssue, 'next'));
+  document.querySelector('main')?.insertAdjacentElement('afterend', pagination);
+}

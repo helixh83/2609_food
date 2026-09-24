@@ -59,3 +59,13 @@ footer{background:#101612;color:#f4f1e8;padding:95px max(24px,8vw) 35px}.footer-
 
 .theme-seaurchin .dishes{padding:140px 0}
 @media(max-width:620px){.theme-seaurchin .dishes{padding:90px 0}}
+
+/* Series pagination */
+.series-pagination{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;max-width:1440px;margin:0 auto;padding:0 5vw 5rem}
+.series-pagination a{display:flex;min-height:8rem;flex-direction:column;justify-content:center;padding:1.5rem;border:1px solid rgba(35,31,27,.18);color:inherit;text-decoration:none;transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.series-pagination a:hover,.series-pagination a:focus-visible{background:#24221f;color:#fff;transform:translateY(-2px)}
+.series-pagination small{margin-bottom:.55rem;font-size:.72rem;font-weight:700;letter-spacing:.08em}
+.series-pagination strong{font-family:'Gowun Batang',serif;font-size:clamp(1.05rem,1.6vw,1.35rem)}
+.series-page-link.next{text-align:right;align-items:flex-end}.series-collection-link{text-align:center;align-items:center}
+.series-pagination:has(.series-collection-link:first-child) .series-collection-link{grid-column:2}
+@media(max-width:700px){.series-pagination{grid-template-columns:1fr 1fr;padding:0 1rem 3rem}.series-pagination a{min-height:6.5rem;padding:1.1rem}.series-collection-link{grid-column:1/-1;grid-row:1}.series-pagination:has(.series-collection-link:first-child) .series-collection-link{grid-column:1/-1}}
