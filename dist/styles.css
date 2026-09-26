@@ -73,3 +73,20 @@ footer{background:#101612;color:#f4f1e8;padding:95px max(24px,8vw) 35px}.footer-
 /* A table where each issue can be tasted */
 .taste-stop{padding:9rem 0 5rem}.taste-stop-heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:end;margin-bottom:3rem}.taste-stop-heading h2{margin:0;font:700 clamp(2.4rem,5vw,4.6rem)/1.16 var(--serif);letter-spacing:-.055em}.taste-stop-card{padding:clamp(1.6rem,4vw,3.2rem);border:1px solid rgba(35,31,27,.22);border-top:5px solid var(--fern);background:#e4e1d7}.taste-stop-meta{display:flex;justify-content:space-between;gap:1rem;color:var(--fern);font-size:.74rem;font-weight:800;letter-spacing:.06em}.taste-stop-meta small{color:#6b6a63;font-size:.74rem}.taste-stop-card h3{margin:1.25rem 0 .85rem;font:700 clamp(2rem,4vw,3.5rem)/1.15 var(--serif);letter-spacing:-.04em}.taste-stop-card>p{max-width:760px;margin:0;color:#565851;font-size:1rem;line-height:1.85}.taste-stop-foot{display:grid;grid-template-columns:1fr .55fr auto;gap:1.5rem;align-items:end;margin-top:2.3rem;padding-top:1.25rem;border-top:1px solid rgba(35,31,27,.18)}.taste-stop-foot span{display:flex;flex-direction:column;gap:.35rem}.taste-stop-foot small{color:#77776f;font-size:.7rem;font-weight:700}.taste-stop-foot strong{font:700 1rem var(--serif)}.taste-stop-foot a{padding:.9rem 1.1rem;background:var(--forest);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700}.taste-stop-criteria{margin:1rem 0 0;color:#71716b;font-size:.72rem;line-height:1.7}.taste-stop-criteria strong{margin-right:.55rem;color:var(--ink)}
 @media(max-width:700px){.taste-stop{padding:6rem 1rem 3.5rem}.taste-stop-heading{grid-template-columns:1fr;gap:1rem}.taste-stop-foot{grid-template-columns:1fr 1fr}.taste-stop-foot a{grid-column:1/-1;text-align:center}.taste-stop-meta{align-items:flex-start}.taste-stop-meta small{text-align:right}}
+
+/* Issues 13—20 */
+.theme-galchi{--forest:#203d45;--fern:#4e7f86;--leaf:#93b4b0;--apricot:#e0a65f;--orange:#c97848}
+.theme-gakjaegi{--forest:#263d49;--fern:#557c87;--leaf:#9ab4ae;--apricot:#d5b66f;--orange:#b96b48}
+.theme-gingi{--forest:#3f342d;--fern:#8b5943;--leaf:#b48665;--apricot:#dda66c;--orange:#bd5f42}
+.theme-kong{--forest:#373a31;--fern:#74785a;--leaf:#a7a37c;--apricot:#d2ae72;--orange:#9b6849}
+.theme-woldongmu{--forest:#344036;--fern:#647b61;--leaf:#9bb08b;--apricot:#d6ae72;--orange:#a86549}
+.theme-gujwa{--forest:#3d392d;--fern:#68744e;--leaf:#9ca674;--apricot:#e5a656;--orange:#d36b35}
+.theme-hanchi{--forest:#172f49;--fern:#2f6f8c;--leaf:#70a9b4;--apricot:#e5b262;--orange:#cb7146}
+.theme-tot{--forest:#283d37;--fern:#527666;--leaf:#8eaa8d;--apricot:#d3a76a;--orange:#a86346}
+.issue-card.galchi .issue-info>span{color:#4e7f86}.issue-card.gakjaegi .issue-info>span{color:#557c87}.issue-card.gingi .issue-info>span{color:#8b5943}.issue-card.kong .issue-info>span{color:#74785a}.issue-card.woldongmu .issue-info>span{color:#647b61}.issue-card.gujwa .issue-info>span{color:#d36b35}.issue-card.hanchi .issue-info>span{color:#2f6f8c}.issue-card.tot .issue-info>span{color:#527666}
+
+/* Twenty-issue landing mosaic */
+.series-collage{grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,minmax(0,1fr))}
+.series-collage .cover span{left:10px;right:8px;bottom:9px}.series-collage .cover strong{font-size:clamp(13px,1vw,18px)}.series-collage .cover small{font-size:6px;margin-bottom:4px}
+@media(max-width:1000px){.series-collage{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(5,170px);min-height:850px}}
+@media(max-width:620px){.series-collage{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(10,155px);min-height:1550px}.series-collage .cover strong{font-size:16px}.series-collage .cover small{font-size:7px}}

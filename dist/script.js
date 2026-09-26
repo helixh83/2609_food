@@ -81,7 +81,15 @@ const fieldGuideIssues = [
   ['okdom', '09', '옥돔'],
   ['jiseul', '10', '지슬'],
   ['shwindari', '11', '쉰다리'],
-  ['kkwongyeot', '12', '꿩엿']
+  ['kkwongyeot', '12', '꿩엿'],
+  ['galchiguk', '13', '갈칫국'],
+  ['gakjaegiguk', '14', '각재기국'],
+  ['gingijuk', '15', '깅이죽'],
+  ['kong', '16', '제주 콩'],
+  ['woldongmu', '17', '월동무'],
+  ['gujwa-carrot', '18', '구좌 당근'],
+  ['hanchi', '19', '제주 한치'],
+  ['tot', '20', '제주 톳']
 ];
 
 const currentIssueSlug = window.location.pathname.split('/').filter(Boolean).at(-1);
@@ -159,6 +167,54 @@ const foodStops = {
     menu: '제주 꿩엿',
     copy: '식당에서 즉석으로 먹기 어려운 꿩엿을 전통식품 제품으로 만날 수 있습니다. 원재료와 제조 표시를 읽으며 도감의 기록과 오늘의 상품을 비교하기 좋습니다.',
     url: 'https://www.tamnao.com/web/sv/detailPrdt.do?prdtNum=SV00000200'
+  },
+  galchiguk: {
+    type: '향토음식점', name: '황금어장', location: '제주시 연동',
+    menu: '갈치호박국',
+    copy: '신선한 갈치와 호박을 맑게 끓인 제주식 국을 만날 수 있습니다. 구이·조림과 다른 담백한 갈치의 결을 비교하기 좋습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001507&menuId=DOM_000001719000000000'
+  },
+  gakjaegiguk: {
+    type: '향토음식점', name: '앞뱅디식당', location: '제주시 연동',
+    menu: '각재기국',
+    copy: '전갱이와 배추를 중심으로 한 각재기국을 냅니다. 복잡한 양념보다 선도와 손질, 배추의 단맛이 만드는 국물을 살펴보기 좋습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018305&menuId=DOM_000001719002000000'
+  },
+  gingijuk: {
+    type: '향토음식점', name: '모메존', location: '제주시 구좌읍',
+    menu: '깅이죽',
+    copy: '작은 게를 갈고 체에 걸러 쌀과 끓이는 깅이죽을 통해 바닷가 재료를 남김없이 쓰던 조리법을 한 그릇에서 살펴봅니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001265&menuId=DOM_000001719000000000'
+  },
+  kong: {
+    type: '두부 전문점', name: '정순화손두부', location: '제주시 조천읍',
+    menu: '손두부 · 비지찌개',
+    copy: '직접 만든 두부와 비지찌개 등 콩이 서로 다른 한 끼로 바뀌는 메뉴를 함께 볼 수 있습니다. 콩 원산지는 방문 때 별도로 확인해 주세요.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000501347'
+  },
+  woldongmu: {
+    type: '시장 향토음식점', name: '제주토속', location: '제주시 보성시장',
+    menu: '무채를 넣은 제주 빙떡',
+    copy: '삶은 무채를 얇은 메밀전에 말아 내는 빙떡에서 월동무의 담백한 단맛과 수분이 메밀을 받치는 방식을 확인할 수 있습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000501363'
+  },
+  'gujwa-carrot': {
+    type: '마을카페', name: '카페477플러스', location: '제주시 구좌읍 세화리',
+    menu: '구좌 당근 주스',
+    copy: '세화마을 주민 협동조합이 구좌 로컬푸드로 음료와 빵을 만듭니다. 산지 농산물이 마을의 현대 메뉴로 이어지는 모습을 보기 좋습니다.',
+    url: 'https://www.visitjeju.net/kareumstay/villages/placeDetail/334'
+  },
+  hanchi: {
+    type: '계절 해산물점', name: '황금어장', location: '제주시 연동',
+    menu: '한치회 · 활한치비빔밥',
+    copy: '여름 계절 메뉴로 한치회와 활한치비빔밥을 냅니다. 생물 수급에 따라 판매 여부가 달라질 수 있어 당일 확인이 필요한 메뉴입니다.',
+    url: 'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001507'
+  },
+  tot: {
+    type: '제주 한정식', name: '제주베이', location: '제주시 외도이동',
+    menu: '톳밥',
+    copy: '갈치구이 한 상에 톳밥을 곁들입니다. 톳이 작은 반찬을 넘어 밥의 일부가 되는 조리법을 다른 제주 음식과 함께 살펴볼 수 있습니다.',
+    url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000013310&menuId=DOM_000001719002000000'
   }
 };
 
@@ -207,7 +263,7 @@ if (currentIssueIndex >= 0) {
   const collectionLink = document.createElement('a');
   collectionLink.className = 'series-collection-link';
   collectionLink.href = '../index.html#issues';
-  collectionLink.innerHTML = '<small>JEJU FOOD FIELD GUIDE</small><strong>열두 편 전체 보기</strong>';
+  collectionLink.innerHTML = '<small>JEJU FOOD FIELD GUIDE</small><strong>스무 편 전체 보기</strong>';
   pagination.append(collectionLink);
 
   if (nextIssue) pagination.append(makeIssueLink(nextIssue, 'next'));
