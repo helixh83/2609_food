@@ -301,13 +301,30 @@ if (currentIssueIndex >= 0) {
 
 const issueFilterButtons = [...document.querySelectorAll('[data-issue-filter]')];
 const issueFilterCards = [...document.querySelectorAll('.issue-card[data-category]')];
+const heroFilterLinks = [...document.querySelectorAll('[data-hero-filter]')];
 const issueResultCount = document.querySelector('#issue-result-count');
-issueFilterButtons.forEach((button) => button.addEventListener('click', () => {
-  const category = button.dataset.issueFilter;
+const issueResultTitle = document.querySelector('#issue-result-title');
+const issueResultEyebrow = document.querySelector('#issue-result-eyebrow');
+const issueResultDescription = document.querySelector('#issue-result-description');
+const issueCategories = {
+  all: { title:'서른네 편의 제주', eyebrow:'ALL 34 ISSUES', description:'재료에서 사람, 조리와 문화로 이어지는 전체 도감을 보고 있습니다.' },
+  'sea-harvest': { title:'바다에서 건져 올린 여섯 편', eyebrow:'PATH 01 · SHORE & HAENYEO', description:'조간대와 공동어장, 해녀의 물질에서 시작된 음식을 모았습니다.' },
+  'fish-season': { title:'제철 바다를 담은 여섯 편', eyebrow:'PATH 02 · FISH & SEASON', description:'물고기의 철과 손질, 국과 회·젓으로 이어진 바다의 식탁입니다.' },
+  'field-crop': { title:'밭에서 자란 여섯 편', eyebrow:'PATH 03 · FIELD & CROP', description:'화산회토와 바람, 겨울과 봄을 건넌 제주 밭의 작물을 읽습니다.' },
+  'grain-craft': { title:'곡물을 바꿔 먹은 여섯 편', eyebrow:'PATH 04 · GRAIN & CRAFT', description:'메밀과 차조가 떡·국수·음료·술로 변하는 부엌의 기술을 모았습니다.' },
+  'ferment-store': { title:'시간을 저장한 네 편', eyebrow:'PATH 05 · FERMENT & STORE', description:'소금과 간장, 누룩과 장독으로 짧은 제철을 오래 남긴 음식입니다.' },
+  'meat-feast': { title:'함께 나눈 잔치의 여섯 편', eyebrow:'PATH 06 · MEAT & FEAST', description:'한 마리를 삶고 부위별로 나누며 공동체가 함께 먹었던 음식을 모았습니다.' }
+};
+function applyIssueFilter(category, scrollToResults = true) {
+  const meta = issueCategories[category] || issueCategories.all;
   issueFilterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item.dataset.issueFilter === category)));
   let count = 0;
   issueFilterCards.forEach((card) => { const show = category === 'all' || card.dataset.category === category; card.hidden = !show; if (show) count += 1; });
-  const categoryNames = { sea: '바다와 해녀', field: '밭과 계절', ferment: '발효와 저장', feast: '잔치와 부엌' };
-  if (issueResultCount) issueResultCount.textContent = category === 'all' ? '34편을 보고 있습니다' : categoryNames[category] + ' · ' + count + '편을 보고 있습니다';
-  document.querySelector('#issues')?.scrollIntoView({behavior:'smooth', block:'start'});
-}));
+  if (issueResultTitle) issueResultTitle.textContent = meta.title;
+  if (issueResultEyebrow) issueResultEyebrow.textContent = meta.eyebrow;
+  if (issueResultDescription) issueResultDescription.textContent = meta.description;
+  if (issueResultCount) issueResultCount.textContent = count + '편을 보고 있습니다';
+  if (scrollToResults) document.querySelector('#issues')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+issueFilterButtons.forEach((button) => button.addEventListener('click', () => applyIssueFilter(button.dataset.issueFilter)));
+heroFilterLinks.forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); applyIssueFilter(link.dataset.heroFilter); }));
