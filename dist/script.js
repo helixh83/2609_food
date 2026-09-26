@@ -89,7 +89,21 @@ const fieldGuideIssues = [
   ['woldongmu', '17', '월동무'],
   ['gujwa-carrot', '18', '구좌 당근'],
   ['hanchi', '19', '제주 한치'],
-  ['tot', '20', '제주 톳']
+  ['tot', '20', '제주 톳'],
+  ['omegitteok', '21', '오메기떡'],
+  ['omegisul', '22', '오메기술'],
+  ['gosorisul', '23', '고소리술'],
+  ['malgogi', '24', '말고기'],
+  ['jeopjjak', '25', '접짝뼈국'],
+  ['suae', '26', '수애'],
+  ['agangbal', '27', '아강발'],
+  ['kkwong-memil', '28', '꿩메밀국수'],
+  ['obeunjagi', '29', '오분자기'],
+  ['sora', '30', '제주 소라'],
+  ['saengseon-miyeokguk', '31', '생선미역국'],
+  ['manongji', '32', '마농지'],
+  ['doenjang', '33', '제주 된장'],
+  ['gamgyul', '34', '제주 감귤']
 ];
 
 const currentIssueSlug = window.location.pathname.split('/').filter(Boolean).at(-1);
@@ -210,6 +224,20 @@ const foodStops = {
     copy: '여름 계절 메뉴로 한치회와 활한치비빔밥을 냅니다. 생물 수급에 따라 판매 여부가 달라질 수 있어 당일 확인이 필요한 메뉴입니다.',
     url: 'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000001507'
   },
+  omegitteok: {type:'떡집',name:'오복떡집',location:'제주시 동문시장',menu:'팥·견과 오메기떡',copy:'팥과 견과 고물을 입힌 오늘의 오메기떡을 비교해 볼 수 있습니다. 차조 함량과 속 재료, 보관법을 함께 물어보세요.',url:'https://visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021196'},
+  omegisul: {type:'전통주 생산·체험',name:'제주샘주',location:'제주시 애월읍',menu:'오메기술 · 고소리술',copy:'차조 발효주와 이를 증류한 술을 나란히 살펴볼 수 있습니다. 프로그램과 시음 가능 여부는 미리 확인해 주세요.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000007853'},
+  gosorisul: {type:'전통주 체험',name:'술 익는 집',location:'제주시 한경면',menu:'고소리술 빚기·시음',copy:'제주 옹기 고소리의 구조와 증류 과정을 체험으로 잇습니다. 예약 일정과 운전자 시음 제한을 먼저 확인해 주세요.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000016095'},
+  malgogi: {type:'말고기 전문점',name:'백마가든',location:'제주시 노형동',menu:'말육회 · 구이 · 탕',copy:'여러 부위를 한 상에서 비교해 말고기의 결·지방·조리법 차이를 살펴보기 좋습니다.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000014030&menuId=DOM_000001719000000000'},
+  jeopjjak: {type:'향토음식점',name:'도두항식당',location:'제주시 도두동',menu:'접짝뼈 놈삐국',copy:'접짝뼈와 무를 오래 끓인 국을 통해 뼈에 붙은 살과 국물의 관계를 살펴볼 수 있습니다.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000015672'},
+  suae: {type:'향토음식점',name:'제주미담',location:'제주시 이도이동',menu:'제주 순대 · 몸국 · 돔베고기',copy:'수애와 몸국, 돔베고기를 한 상에서 비교해 잔치 돼지의 분할과 쓰임을 읽기 좋습니다.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000015973'},
+  agangbal: {type:'제주 국수·향토음식점',name:'만세국수',location:'제주시 오라동',menu:'아강발',copy:'양념 족발과 다른 삶은 돼지족의 맛과 곁들이는 양념을 살펴볼 수 있습니다.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000016014'},
+  'kkwong-memil': {type:'계절 향토국수점',name:'돈물국수',location:'제주시 건입동',menu:'꿩메밀국수',copy:'꿩 육수와 메밀면의 조합을 만날 수 있는 곳으로 소개됩니다. 계절·재료 수급에 따라 판매 여부를 먼저 확인해 주세요.',url:'https://www.ktourmap.com/spotDetails.jsp?contentId=2939004'},
+  obeunjagi: {type:'해산물 향토음식점',name:'순옥이네 명가',location:'제주시 도두동',menu:'오분자기·전복 요리',copy:'작은 패류가 국물과 한 상에서 어떻게 쓰이는지 볼 수 있습니다. 실제 사용 종과 원산지는 주문 전에 확인해 주세요.',url:'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020103&menuId=DOM_000001719000000000'},
+  sora: {type:'해녀 운영 음식점',name:'소라네집',location:'제주시 구좌읍',menu:'소라회 · 구이',copy:'해녀가 운영하는 공간에서 소라의 살과 내장, 조리법 차이를 살펴볼 수 있습니다. 당일 채취·수급 여부를 확인해 주세요.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021609'},
+  'saengseon-miyeokguk': {type:'해산물 향토음식점',name:'순옥이네 명가',location:'제주시 도두동',menu:'성게미역국',copy:'성게가 미역국에 더하는 단맛과 바다 향을 살펴보기 좋습니다. 계절별 원물 수급은 방문 전에 확인해 주세요.',url:'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020103&menuId=DOM_000001719000000000'},
+  manongji: {type:'향토음식점',name:'제주미담',location:'제주시 이도이동',menu:'돼지고기 한 상의 저장반찬',copy:'돼지고기 상차림에서 마농지 같은 절임 반찬의 역할을 관찰해 보세요. 당일 반찬 구성과 재료는 식당에 확인해야 합니다.',url:'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_300000000015973'},
+  doenjang: {type:'해녀 음식점',name:'보목해녀의집',location:'서귀포시 보목동',menu:'된장 자리물회',copy:'된장과 식초가 자리돔·채소를 잇는 제주식 물회 국물을 살펴보기 좋습니다.',url:'https://m.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018358'},
+  gamgyul: {type:'공립 전문박물관',name:'서귀포감귤박물관',location:'서귀포시 신효동',menu:'감귤 역사 전시 · 계절 수확 체험',copy:'감귤의 역사·품종·재배 변화를 전시로 보고, 운영 시기에는 노지감귤 수확도 경험할 수 있습니다.',url:'https://visitjeju.net/kr/detail/view?contentsid=CONT_000000000500019'},
   tot: {
     type: '제주 한정식', name: '제주베이', location: '제주시 외도이동',
     menu: '톳밥',
@@ -263,9 +291,23 @@ if (currentIssueIndex >= 0) {
   const collectionLink = document.createElement('a');
   collectionLink.className = 'series-collection-link';
   collectionLink.href = '../index.html#issues';
-  collectionLink.innerHTML = '<small>JEJU FOOD FIELD GUIDE</small><strong>스무 편 전체 보기</strong>';
+  collectionLink.innerHTML = '<small>JEJU FOOD FIELD GUIDE</small><strong>서른네 편 전체 보기</strong>';
   pagination.append(collectionLink);
 
   if (nextIssue) pagination.append(makeIssueLink(nextIssue, 'next'));
   document.querySelector('main')?.insertAdjacentElement('afterend', pagination);
 }
+
+
+const issueFilterButtons = [...document.querySelectorAll('[data-issue-filter]')];
+const issueFilterCards = [...document.querySelectorAll('.issue-card[data-category]')];
+const issueResultCount = document.querySelector('#issue-result-count');
+issueFilterButtons.forEach((button) => button.addEventListener('click', () => {
+  const category = button.dataset.issueFilter;
+  issueFilterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item.dataset.issueFilter === category)));
+  let count = 0;
+  issueFilterCards.forEach((card) => { const show = category === 'all' || card.dataset.category === category; card.hidden = !show; if (show) count += 1; });
+  const categoryNames = { sea: '바다와 해녀', field: '밭과 계절', ferment: '발효와 저장', feast: '잔치와 부엌' };
+  if (issueResultCount) issueResultCount.textContent = category === 'all' ? '34편을 보고 있습니다' : categoryNames[category] + ' · ' + count + '편을 보고 있습니다';
+  document.querySelector('#issues')?.scrollIntoView({behavior:'smooth', block:'start'});
+}));
