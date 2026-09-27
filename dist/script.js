@@ -307,7 +307,7 @@ const issueResultTitle = document.querySelector('#issue-result-title');
 const issueResultEyebrow = document.querySelector('#issue-result-eyebrow');
 const issueResultDescription = document.querySelector('#issue-result-description');
 const issueCategories = {
-  all: { title:'서른네 편의 제주', eyebrow:'ALL 34 ISSUES', description:'재료에서 사람, 조리와 문화로 이어지는 전체 도감을 보고 있습니다.' },
+  all: { title:'제주 식탁의 서른네 가지 질문', eyebrow:'ALL 34 QUESTIONS', description:'익숙한 음식의 이름을 누르면 재료에서 사람, 조리와 문화로 이어지는 이야기가 시작됩니다.' },
   'sea-harvest': { title:'바다에서 건져 올린 여섯 편', eyebrow:'PATH 01 · SHORE & HAENYEO', description:'조간대와 공동어장, 해녀의 물질에서 시작된 음식을 모았습니다.' },
   'fish-season': { title:'제철 바다를 담은 여섯 편', eyebrow:'PATH 02 · FISH & SEASON', description:'물고기의 철과 손질, 국과 회·젓으로 이어진 바다의 식탁입니다.' },
   'field-crop': { title:'밭에서 자란 여섯 편', eyebrow:'PATH 03 · FIELD & CROP', description:'화산회토와 바람, 겨울과 봄을 건넌 제주 밭의 작물을 읽습니다.' },
@@ -336,3 +336,73 @@ issueFilterButtons.forEach((button) => button.addEventListener('click', () => {
   applyIssueFilter(category);
 }));
 heroFilterLinks.forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); applyIssueFilter(link.dataset.heroFilter); }));
+
+const featuredQuestions = [
+  {
+    meta: 'ISSUE 29 · 바다의 채집',
+    question: '오분자기는 정말<br>어린 전복일까<span>?</span>',
+    teaser: '닮은 껍데기에서 시작된 제주 식탁의 오래된 오해를 따라갑니다.',
+    href: './obeunjagi/', image: './assets/jeju-obeunjagi-abalone.png',
+    alt: '오분자기와 전복을 비교하는 제주 바다의 식재료', caption: '오분자기와 전복'
+  },
+  {
+    meta: 'ISSUE 21 · 곡물과 떡',
+    question: '오메기떡은 원래<br>팥고물 떡이었을까<span>?</span>',
+    teaser: '관광객에게 익숙한 팥고물 너머, 차조와 술로 이어진 원래의 모습을 봅니다.',
+    href: './omegitteok/', image: './assets/jeju-omegitteok-millet.png',
+    alt: '차조로 빚는 제주 오메기떡', caption: '오메기떡의 전과 지금'
+  },
+  {
+    meta: 'ISSUE 03 · 불과 발효',
+    question: '흑돼지에는 왜<br>멜젓이 잘 어울릴까<span>?</span>',
+    teaser: '고소한 지방과 짠맛·감칠맛이 불판 위 작은 종지에서 만나는 이유입니다.',
+    href: './meljeot/', image: './assets/jeju-meljeot-grill.png',
+    alt: '불판 위 흑돼지와 함께 끓는 멜젓', caption: '흑돼지와 멜젓'
+  },
+  {
+    meta: 'ISSUE 10 · 밭과 기억',
+    question: '제주에서는 감자를 왜<br>‘지슬’이라고 부를까<span>?</span>',
+    teaser: '한 제주어 안에 밭농사와 끼니, 구황과 제주4·3의 기억이 함께 남아 있습니다.',
+    href: './jiseul/', image: './assets/jeju-jiseul-field.png',
+    alt: '화산회토 밭에서 캐는 제주 지슬', caption: '감자와 지슬'
+  },
+  {
+    meta: 'ISSUE 34 · 과원과 산업',
+    question: '감귤은 언제부터<br>제주를 대표했을까<span>?</span>',
+    teaser: '귀한 진상품이 섬의 풍경과 농촌을 바꾼 대표 산업이 되기까지를 따라갑니다.',
+    href: './gamgyul/', image: './assets/jeju-citrus-orchard.png',
+    alt: '제주 감귤 과수원과 수확 풍경', caption: '감귤과 제주의 변화'
+  }
+];
+const featuredQuestionButtons = [...document.querySelectorAll('[data-featured-question]')];
+const featuredQuestionTitle = document.querySelector('#featured-question');
+if (featuredQuestionTitle && featuredQuestionButtons.length) {
+  const featuredMeta = document.querySelector('#hero-question-meta');
+  const featuredTeaser = document.querySelector('#hero-question-teaser');
+  const featuredLink = document.querySelector('#hero-question-link');
+  const featuredVisualLink = document.querySelector('#hero-question-visual-link');
+  const featuredImage = document.querySelector('#hero-question-image');
+  const featuredCaptionLabel = document.querySelector('#hero-question-caption-label');
+  const featuredCaption = document.querySelector('#hero-question-caption');
+  const featuredCurrent = document.querySelector('#hero-question-current');
+  let featuredIndex = 0;
+  const showFeaturedQuestion = (index) => {
+    featuredIndex = (index + featuredQuestions.length) % featuredQuestions.length;
+    const item = featuredQuestions[featuredIndex];
+    featuredQuestionTitle.innerHTML = item.question;
+    featuredMeta.textContent = item.meta;
+    featuredTeaser.textContent = item.teaser;
+    featuredLink.href = item.href;
+    featuredVisualLink.href = item.href;
+    featuredVisualLink.setAttribute('aria-label', item.caption + ' 도감 읽기');
+    featuredImage.src = item.image;
+    featuredImage.alt = item.alt;
+    featuredCaptionLabel.textContent = 'QUESTION ' + String(featuredIndex + 1).padStart(2, '0');
+    featuredCaption.textContent = item.caption;
+    featuredCurrent.textContent = String(featuredIndex + 1).padStart(2, '0');
+    featuredQuestionButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === featuredIndex)));
+  };
+  featuredQuestionButtons.forEach((button) => button.addEventListener('click', () => showFeaturedQuestion(Number(button.dataset.featuredQuestion))));
+  document.querySelector('#hero-question-prev')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex - 1));
+  document.querySelector('#hero-question-next')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex + 1));
+}
