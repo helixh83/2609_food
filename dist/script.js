@@ -326,5 +326,13 @@ function applyIssueFilter(category, scrollToResults = true) {
   if (issueResultCount) issueResultCount.textContent = count + '편을 보고 있습니다';
   if (scrollToResults) document.querySelector('#issues')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
-issueFilterButtons.forEach((button) => button.addEventListener('click', () => applyIssueFilter(button.dataset.issueFilter)));
+issueFilterButtons.forEach((button) => button.addEventListener('click', () => {
+  const category = button.dataset.issueFilter;
+  if (category === 'all') {
+    applyIssueFilter('all', false);
+    (document.querySelector('#all-covers') || document.querySelector('#issues'))?.scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+  applyIssueFilter(category);
+}));
 heroFilterLinks.forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); applyIssueFilter(link.dataset.heroFilter); }));
