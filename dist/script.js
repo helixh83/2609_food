@@ -386,6 +386,7 @@ if (featuredQuestionTitle && featuredQuestionButtons.length) {
   const featuredCaption = document.querySelector('#hero-question-caption');
   const featuredCurrent = document.querySelector('#hero-question-current');
   let featuredIndex = 0;
+  const featuredStorageKey = 'jeju-food-featured-question';
   const showFeaturedQuestion = (index) => {
     featuredIndex = (index + featuredQuestions.length) % featuredQuestions.length;
     const item = featuredQuestions[featuredIndex];
@@ -401,8 +402,24 @@ if (featuredQuestionTitle && featuredQuestionButtons.length) {
     featuredCaption.textContent = item.caption;
     featuredCurrent.textContent = String(featuredIndex + 1).padStart(2, '0');
     featuredQuestionButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === featuredIndex)));
+    try {
+      localStorage.setItem(featuredStorageKey, String(featuredIndex));
+    } catch (error) {
+      // The question picker still works when storage is unavailable.
+    }
   };
   featuredQuestionButtons.forEach((button) => button.addEventListener('click', () => showFeaturedQuestion(Number(button.dataset.featuredQuestion))));
   document.querySelector('#hero-question-prev')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex - 1));
   document.querySelector('#hero-question-next')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex + 1));
+  let previousFeaturedIndex = -1;
+  try {
+    previousFeaturedIndex = Number(localStorage.getItem(featuredStorageKey));
+  } catch (error) {
+    previousFeaturedIndex = -1;
+  }
+  const featuredOffset = 1 + Math.floor(Math.random() * (featuredQuestions.length - 1));
+  const randomFeaturedIndex = Number.isInteger(previousFeaturedIndex) && previousFeaturedIndex >= 0 && previousFeaturedIndex < featuredQuestions.length
+    ? (previousFeaturedIndex + featuredOffset) % featuredQuestions.length
+    : Math.floor(Math.random() * featuredQuestions.length);
+  showFeaturedQuestion(randomFeaturedIndex);
 }
