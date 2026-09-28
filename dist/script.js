@@ -374,9 +374,8 @@ const featuredQuestions = [
     alt: '제주 감귤 과수원과 수확 풍경', caption: '감귤과 제주의 변화'
   }
 ];
-const featuredQuestionButtons = [...document.querySelectorAll('[data-featured-question]')];
 const featuredQuestionTitle = document.querySelector('#featured-question');
-if (featuredQuestionTitle && featuredQuestionButtons.length) {
+if (featuredQuestionTitle) {
   const featuredMeta = document.querySelector('#hero-question-meta');
   const featuredTeaser = document.querySelector('#hero-question-teaser');
   const featuredLink = document.querySelector('#hero-question-link');
@@ -401,14 +400,12 @@ if (featuredQuestionTitle && featuredQuestionButtons.length) {
     featuredCaptionLabel.textContent = 'QUESTION ' + String(featuredIndex + 1).padStart(2, '0');
     featuredCaption.textContent = item.caption;
     featuredCurrent.textContent = String(featuredIndex + 1).padStart(2, '0');
-    featuredQuestionButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === featuredIndex)));
     try {
       localStorage.setItem(featuredStorageKey, String(featuredIndex));
     } catch (error) {
       // The question picker still works when storage is unavailable.
     }
   };
-  featuredQuestionButtons.forEach((button) => button.addEventListener('click', () => showFeaturedQuestion(Number(button.dataset.featuredQuestion))));
   document.querySelector('#hero-question-prev')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex - 1));
   document.querySelector('#hero-question-next')?.addEventListener('click', () => showFeaturedQuestion(featuredIndex + 1));
   let previousFeaturedIndex = -1;
