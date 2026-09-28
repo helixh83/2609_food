@@ -342,35 +342,35 @@ const featuredQuestions = [
     meta: 'ISSUE 29 · 바다의 채집',
     question: '오분자기는 정말<br>어린 전복일까<span>?</span>',
     teaser: '닮은 껍데기에서 시작된 제주 식탁의 오래된 오해를 따라갑니다.',
-    href: './obeunjagi/', image: './assets/jeju-obeunjagi-abalone.png',
+    href: './obeunjagi/', image: './assets/jeju-obeunjagi-abalone-1600.webp',
     alt: '오분자기와 전복을 비교하는 제주 바다의 식재료', caption: '오분자기와 전복'
   },
   {
     meta: 'ISSUE 21 · 곡물과 떡',
     question: '오메기떡은 원래<br>팥고물 떡이었을까<span>?</span>',
     teaser: '관광객에게 익숙한 팥고물 너머, 차조와 술로 이어진 원래의 모습을 봅니다.',
-    href: './omegitteok/', image: './assets/jeju-omegitteok-millet.png',
+    href: './omegitteok/', image: './assets/jeju-omegitteok-millet-1600.webp',
     alt: '차조로 빚는 제주 오메기떡', caption: '오메기떡의 전과 지금'
   },
   {
     meta: 'ISSUE 03 · 불과 발효',
     question: '흑돼지에는 왜<br>멜젓이 잘 어울릴까<span>?</span>',
     teaser: '고소한 지방과 짠맛·감칠맛이 불판 위 작은 종지에서 만나는 이유입니다.',
-    href: './meljeot/', image: './assets/jeju-meljeot-grill.png',
+    href: './meljeot/', image: './assets/jeju-meljeot-grill-1600.webp',
     alt: '불판 위 흑돼지와 함께 끓는 멜젓', caption: '흑돼지와 멜젓'
   },
   {
     meta: 'ISSUE 10 · 밭과 기억',
     question: '제주에서는 감자를 왜<br>‘지슬’이라고 부를까<span>?</span>',
     teaser: '한 제주어 안에 밭농사와 끼니, 구황과 제주4·3의 기억이 함께 남아 있습니다.',
-    href: './jiseul/', image: './assets/jeju-jiseul-field.png',
+    href: './jiseul/', image: './assets/jeju-jiseul-field-1600.webp',
     alt: '화산회토 밭에서 캐는 제주 지슬', caption: '감자와 지슬'
   },
   {
     meta: 'ISSUE 34 · 과원과 산업',
     question: '감귤은 언제부터<br>제주를 대표했을까<span>?</span>',
     teaser: '귀한 진상품이 섬의 풍경과 농촌을 바꾼 대표 산업이 되기까지를 따라갑니다.',
-    href: './gamgyul/', image: './assets/jeju-citrus-orchard.png',
+    href: './gamgyul/', image: './assets/jeju-citrus-orchard-1600.webp',
     alt: '제주 감귤 과수원과 수확 풍경', caption: '감귤과 제주의 변화'
   }
 ];
